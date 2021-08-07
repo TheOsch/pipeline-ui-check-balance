@@ -4,73 +4,47 @@ This demo shows:
 - How to log in via MyAlgo wallet
 - How to check user's balance both on login and on the pages
 
-This is a standard React application with routes. It consists of 3 pages and two additional com
+## Deploying the application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Clone the repository, enter the directory and run `npm install`. This is enough.
 
-## Available Scripts
+## Testing the application
 
-In the project directory, you can run:
+- Run `npm start` in the application's root directory. After a few seconds the application will appear
+  in a browser.
+- Open the`config.json` file in the `src` subdirectory. It looks like this:
+```
+{
+    "minBalance": 50
+}
+```
+Change 50 to the value that exceeds your own Algorand balance and save the file.
+- Go to the page in a browser and make sure the value you entered is on the screen.
+- Click 'Login' button and log in. See that you're redirected to the page with a failure message.
+- Try to change '/failure' to '/restricted' in the browser's address bar. Make sure you're 
+  redirected to the home page.
+- Change the value in `config.json` again, but now to the value smaller than your balance 
+  (if your balance is zero, write -1 there)
+- Go to the browser, see the new value on the home page and click 'Login'. See the restricted page.
 
-### `npm start`
+## What's there inside
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This is a standard React application with routes. It consists of 3 pages and two additional components.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+That's where it can appear to be interesting to look at:
+- [App.js](https://github.com/TheOsch/pipeline-ui-check-balance/blob/main/src/App.js)
+  Root component. Almost nothing related to Pipeline-UI, just a simple React routing sample.
+- Pages
+  - [Home](https://github.com/TheOsch/pipeline-ui-check-balance/blob/main/src/pages/Home/index.js)
+    Absolutely nothing interesting. Almost a plain text.
+  - [Restricted](https://github.com/TheOsch/pipeline-ui-check-balance/blob/main/src/pages/Restricted/index.js)
+and [Failure](https://github.com/TheOsch/pipeline-ui-check-balance/blob/main/src/pages/Failure/index.js) 
+can be interesting. They show how to obtain and display user's balance.
+- Components
+  - [Title](https://github.com/TheOsch/pipeline-ui-check-balance/blob/main/src/components/Title/index.js)
+    Just an icon and a label. Nothing interesting.
+  - [Login](https://github.com/TheOsch/pipeline-ui-check-balance/blob/main/src/components/Login/index.js)
+    A Login button. It does all the Pipeline-related job: logs in, checks balance and transfers results to
+    the root component to handle. If you look there you'll find that there are more comments than code.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Happy coding!
