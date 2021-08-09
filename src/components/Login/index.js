@@ -38,9 +38,6 @@ function doLogin(onLogin) {
   })
 }
 
-/**
- * 
- */
 function Login({ onLogin }) {
   return <Button onClick={() => doLogin(onLogin)}>Login</Button>;
 }
